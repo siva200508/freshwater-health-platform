@@ -1,0 +1,342 @@
+[
+  {
+    "id": "rep-010",
+    "waterBodyId": "wb-001",
+    "waterBodyName": "Hussain Sagar Lake",
+    "userId": "usr-priya",
+    "reporterName": "Priya Sharma",
+    "title": "Automated Test: Chemical runoff spotted along western inlet",
+    "pollutionType": "Chemical Runoff",
+    "severity": "High",
+    "severityScore": 4,
+    "description": "Automated test suite verification incident with yellow effluent discharge.",
+    "location": {
+      "address": "Western Culvert Inflow Point",
+      "latitude": 17.4239,
+      "longitude": 78.4738
+    },
+    "observations": {
+      "waterColor": "Turbid Yellow",
+      "odor": "Chemical / Pungent",
+      "turbidity": "Slightly Murky",
+      "ph": 8.6,
+      "dissolvedOxygenMgL": 2.3
+    },
+    "evidenceImage": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
+    "status": "Under Investigation",
+    "endorsements": 2,
+    "endorsedByUserIds": [
+      "usr-priya",
+      "usr-david"
+    ],
+    "authorityNotes": "State PCB field inspection scheduled.",
+    "createdAt": "2026-10-22T01:51:52.588Z",
+    "updatedAt": "2026-10-22T01:51:52.766Z"
+  },
+  {
+    "id": "rep-009",
+    "waterBodyId": "wb-001",
+    "waterBodyName": "Hussain Sagar Lake",
+    "userId": "usr-priya",
+    "reporterName": "Priya Sharma",
+    "title": "Automated Test: Chemical runoff spotted along western inlet",
+    "pollutionType": "Chemical Runoff",
+    "severity": "High",
+    "severityScore": 4,
+    "description": "Automated test suite verification incident with yellow effluent discharge.",
+    "location": {
+      "address": "Western Culvert Inflow Point",
+      "latitude": 17.4239,
+      "longitude": 78.4738
+    },
+    "observations": {
+      "waterColor": "Turbid Yellow",
+      "odor": "Chemical / Pungent",
+      "turbidity": "Slightly Murky",
+      "ph": 8.6,
+      "dissolvedOxygenMgL": 2.3
+    },
+    "evidenceImage": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
+    "status": "Under Investigation",
+    "endorsements": 2,
+    "endorsedByUserIds": [
+      "usr-priya",
+      "usr-david"
+    ],
+    "authorityNotes": "State PCB field inspection scheduled.",
+    "createdAt": "2026-10-22T01:51:18.334Z",
+    "updatedAt": "2026-10-22T01:51:18.518Z"
+  },
+  {
+    "id": "rep-001",
+    "waterBodyId": "wb-001",
+    "waterBodyName": "Hussain Sagar Lake",
+    "userId": "usr-priya",
+    "reporterName": "Priya Sharma",
+    "title": "Severe chemical foam accumulation near Tank Bund culvert",
+    "pollutionType": "Industrial Effluent",
+    "severity": "High",
+    "severityScore": 4,
+    "description": "Thick white detergent-like foam discharging from the northern inlet. Strong pungent chemical odor detected over a 200m radius with visible fish distress along the bank.",
+    "location": {
+      "address": "Tank Bund Road, Northern Culvert Inlet, Hyderabad",
+      "latitude": 17.4285,
+      "longitude": 78.4762
+    },
+    "observations": {
+      "waterColor": "Milky / Foamy White",
+      "odor": "Chemical / Pungent",
+      "turbidity": "Opaque / Muddy",
+      "ph": 8.8,
+      "dissolvedOxygenMgL": 1.6
+    },
+    "evidenceImage": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
+    "status": "Verified",
+    "endorsements": 14,
+    "endorsedByUserIds": [
+      "usr-admin",
+      "usr-david",
+      "usr-siva"
+    ],
+    "authorityNotes": "PCB Inspection Team dispatched; containment booms deployed to arrest downstream drift.",
+    "createdAt": "2026-10-18T09:30:00.000Z",
+    "updatedAt": "2026-10-19T11:15:00.000Z"
+  },
+  {
+    "id": "rep-002",
+    "waterBodyId": "wb-002",
+    "waterBodyName": "Yamuna River (Okhla Barrage Stretch)",
+    "userId": "usr-david",
+    "reporterName": "David Miller",
+    "title": "Extensive industrial surfactant foam covering 400m river reach",
+    "pollutionType": "Industrial Effluent",
+    "severity": "Critical",
+    "severityScore": 5,
+    "description": "Toxic billowing foam piles exceeding 1.5 meters height billowing across the downstream weir of Okhla Barrage. Water appears greyish-black beneath foam layer with zero visible benthic activity.",
+    "location": {
+      "address": "Okhla Barrage Downstream, Kalindi Kunj, New Delhi",
+      "latitude": 28.5458,
+      "longitude": 77.3101
+    },
+    "observations": {
+      "waterColor": "Dark Grey / Foamy White",
+      "odor": "Chemical / Pungent",
+      "turbidity": "Opaque / Muddy",
+      "ph": 9.2,
+      "dissolvedOxygenMgL": 0.2
+    },
+    "evidenceImage": "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80",
+    "status": "Under Investigation",
+    "endorsements": 28,
+    "endorsedByUserIds": [
+      "usr-priya",
+      "usr-siva"
+    ],
+    "authorityNotes": "Central Pollution Control Board (CPCB) air-water sampling team on site. Upstream industrial units served show-cause notices.",
+    "createdAt": "2026-10-19T08:15:00.000Z",
+    "updatedAt": "2026-10-20T14:00:00.000Z"
+  },
+  {
+    "id": "rep-003",
+    "waterBodyId": "wb-003",
+    "waterBodyName": "Bellandur Lake",
+    "userId": "usr-priya",
+    "reporterName": "Priya Sharma",
+    "title": "Untreated sewage bypass into southern feeder canal",
+    "pollutionType": "Domestic Sewage",
+    "severity": "Critical",
+    "severityScore": 5,
+    "description": "Direct discharge of black sewage into the lake feeder channel. Bubbling methane pockets visible with unbearable septic stench affecting nearby residential apartments.",
+    "location": {
+      "address": "Yemalur Main Road, Southern Feeder Inflow, Bengaluru",
+      "latitude": 12.9395,
+      "longitude": 77.6742
+    },
+    "observations": {
+      "waterColor": "Dark Grey / Black",
+      "odor": "Septic / Sewage",
+      "turbidity": "Opaque / Muddy",
+      "ph": 7.1,
+      "dissolvedOxygenMgL": 0.5
+    },
+    "evidenceImage": "https://images.unsplash.com/photo-1621451537084-482c73073a0f?auto=format&fit=crop&w=800&q=80",
+    "status": "Verified",
+    "endorsements": 19,
+    "endorsedByUserIds": [
+      "usr-admin",
+      "usr-david"
+    ],
+    "authorityNotes": "BWSSB engineers instructed to divert sewage flow to tertiary treatment plant #3.",
+    "createdAt": "2026-10-17T11:45:00.000Z",
+    "updatedAt": "2026-10-18T16:20:00.000Z"
+  },
+  {
+    "id": "rep-004",
+    "waterBodyId": "wb-004",
+    "waterBodyName": "Powai Lake",
+    "userId": "usr-david",
+    "reporterName": "David Miller",
+    "title": "Dense single-use plastic waste choking eastern marshland inlet",
+    "pollutionType": "Plastic Waste",
+    "severity": "Moderate",
+    "severityScore": 3,
+    "description": "Accumulation of plastic bottles, food wrappers, and styrofoam containers caught in shoreline water hyacinth beds. Two juvenile birds observed entangled in plastic netting.",
+    "location": {
+      "address": "Powai Lake Promenade, Eastern Wetland Margin, Mumbai",
+      "latitude": 19.1284,
+      "longitude": 72.9115
+    },
+    "observations": {
+      "waterColor": "Greenish Brown",
+      "odor": "Earthy / Mild Decay",
+      "turbidity": "Slightly Murky",
+      "ph": 7.5,
+      "dissolvedOxygenMgL": 3.8
+    },
+    "evidenceImage": "https://images.unsplash.com/photo-1605600659873-d808a13e4d2a?auto=format&fit=crop&w=800&q=80",
+    "status": "Resolved",
+    "endorsements": 11,
+    "endorsedByUserIds": [
+      "usr-priya",
+      "usr-siva"
+    ],
+    "authorityNotes": "BMC Solid Waste Management unit cleared 1.2 metric tons of plastic waste using floating trash skimmers.",
+    "createdAt": "2026-10-12T10:00:00.000Z",
+    "updatedAt": "2026-10-15T18:00:00.000Z"
+  },
+  {
+    "id": "rep-005",
+    "waterBodyId": "wb-005",
+    "waterBodyName": "Ulsoor Lake",
+    "userId": "usr-priya",
+    "reporterName": "Priya Sharma",
+    "title": "Hyper-eutrophic bright green algal bloom causing fish mortality",
+    "pollutionType": "Agricultural Fertilizer",
+    "severity": "High",
+    "severityScore": 4,
+    "description": "Massive blue-green microcystis bloom covering approximately 35% of the western surface. Approximately 50 small carp found floating along the stone bund.",
+    "location": {
+      "address": "Kensington Road, Ulsoor Lake West Bund, Bengaluru",
+      "latitude": 12.9841,
+      "longitude": 77.6185
+    },
+    "observations": {
+      "waterColor": "Vibrant Pea Green / Algae",
+      "odor": "Fishy / Decaying",
+      "turbidity": "Opaque / Muddy",
+      "ph": 8.7,
+      "dissolvedOxygenMgL": 2.2
+    },
+    "evidenceImage": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=800&q=80",
+    "status": "Verified",
+    "endorsements": 17,
+    "endorsedByUserIds": [
+      "usr-admin",
+      "usr-david",
+      "usr-siva"
+    ],
+    "authorityNotes": "Aeration fountains activated 24/7; bio-enzyme treatment underway to suppress cyanobacterial dominance.",
+    "createdAt": "2026-10-16T07:20:00.000Z",
+    "updatedAt": "2026-10-17T12:00:00.000Z"
+  },
+  {
+    "id": "rep-006",
+    "waterBodyId": "wb-006",
+    "waterBodyName": "Ganga River (Varanasi Ghats Stretch)",
+    "userId": "usr-david",
+    "reporterName": "David Miller",
+    "title": "Unregulated disposal of organic solid waste and floral refuse",
+    "pollutionType": "Domestic Sewage",
+    "severity": "Moderate",
+    "severityScore": 3,
+    "description": "Heaps of ceremonial offerings, decomposing marigold garlands, and plastic polythene bags trapped against moored boats near Dashashwamedh Ghat.",
+    "location": {
+      "address": "Dashashwamedh Ghat bank, Varanasi",
+      "latitude": 25.3082,
+      "longitude": 83.0118
+    },
+    "observations": {
+      "waterColor": "Murky Brown",
+      "odor": "Earthy / Stagnant",
+      "turbidity": "Slightly Murky",
+      "ph": 7.9,
+      "dissolvedOxygenMgL": 4.5
+    },
+    "evidenceImage": "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=800&q=80",
+    "status": "Pending",
+    "endorsements": 6,
+    "endorsedByUserIds": [
+      "usr-priya"
+    ],
+    "authorityNotes": "Pending site review by Namami Gange local volunteer patrol.",
+    "createdAt": "2026-10-21T06:45:00.000Z",
+    "updatedAt": "2026-10-21T06:45:00.000Z"
+  },
+  {
+    "id": "rep-007",
+    "waterBodyId": "wb-008",
+    "waterBodyName": "Durgam Cheruvu (Secret Lake)",
+    "userId": "usr-siva",
+    "reporterName": "B.V.S. Siva Kumar",
+    "title": "Construction sediment wash-off muddying lake shoreline",
+    "pollutionType": "Heavy Siltation",
+    "severity": "Low",
+    "severityScore": 2,
+    "description": "Heavy red clay runoff from nearby road widening project washed into the western perimeter after yesterday's rain. Water is intensely turbid near stormwater culvert.",
+    "location": {
+      "address": "CABLE Bridge underpass, Jubilee Hills approach, Hyderabad",
+      "latitude": 17.4342,
+      "longitude": 78.3865
+    },
+    "observations": {
+      "waterColor": "Reddish Brown / Muddy",
+      "odor": "None / Earthy",
+      "turbidity": "Opaque / Muddy",
+      "ph": 7.3,
+      "dissolvedOxygenMgL": 5.2
+    },
+    "evidenceImage": "https://images.unsplash.com/photo-1546548970-71785318a17b?auto=format&fit=crop&w=800&q=80",
+    "status": "Verified",
+    "endorsements": 8,
+    "endorsedByUserIds": [
+      "usr-priya",
+      "usr-admin"
+    ],
+    "authorityNotes": "Contractor notified to install silt fences along embankment.",
+    "createdAt": "2026-10-20T16:00:00.000Z",
+    "updatedAt": "2026-10-21T10:30:00.000Z"
+  },
+  {
+    "id": "rep-008",
+    "waterBodyId": "wb-007",
+    "waterBodyName": "Dal Lake",
+    "userId": "usr-david",
+    "reporterName": "David Miller",
+    "title": "Submerged Azolla weed carpet suffocating navigation channel",
+    "pollutionType": "Agricultural Fertilizer",
+    "severity": "Moderate",
+    "severityScore": 3,
+    "description": "Rapid growth of invasive Azolla fern covering a 100-meter boat passage near Boulevard Road. Decreased water flow and light penetration.",
+    "location": {
+      "address": "Boulevard Road Ghat #7, Dal Lake, Srinagar",
+      "latitude": 34.0982,
+      "longitude": 74.8489
+    },
+    "observations": {
+      "waterColor": "Deep Olive Green",
+      "odor": "Earthy / Mild Decay",
+      "turbidity": "Slightly Murky",
+      "ph": 7.7,
+      "dissolvedOxygenMgL": 6.1
+    },
+    "evidenceImage": "https://images.unsplash.com/photo-1566837945700-30057527ade0?auto=format&fit=crop&w=800&q=80",
+    "status": "Under Investigation",
+    "endorsements": 5,
+    "endorsedByUserIds": [
+      "usr-siva"
+    ],
+    "authorityNotes": "Lake and Waterways Development Authority (LWDA) scheduled weed harvester machine deployment.",
+    "createdAt": "2026-10-19T13:10:00.000Z",
+    "updatedAt": "2026-10-20T08:50:00.000Z"
+  }
+]

@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AquaSentinel | Freshwater Body Health Monitoring Community Platform</title>
+  
+  <!-- Favicon & Fonts -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌊</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome Icons & Leaflet GIS CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+  
+  <!-- Custom Modern Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       TOP NAVIGATION BAR
+       ========================================================================== -->
+  <header class="navbar">
+    <div class="nav-container">
+      <a href="#" class="brand-logo" onclick="switchView('landing-view'); return false;">
+        <div class="brand-icon">🌊</div>
+        <div class="brand-text">Aqua<span>Sentinel</span></div>
+      </a>
+
+      <!-- Navigation Links -->
+      <nav class="nav-menu">
+        <a class="nav-link active" data-view="landing-view" onclick="switchView('landing-view')"><i class="fa-solid fa-house"></i> Home</a>
+        <a class="nav-link" data-view="map-view" onclick="switchView('map-view')"><i class="fa-solid fa-map-location-dot"></i> GIS Map</a>
+        <a class="nav-link" data-view="report-view" onclick="switchView('report-view')"><i class="fa-solid fa-triangle-exclamation"></i> Report Pollution</a>
+        <a class="nav-link" data-view="community-view" onclick="switchView('community-view')"><i class="fa-solid fa-users"></i> Community Feed</a>
+        <a class="nav-link" data-view="directory-view" onclick="switchView('directory-view')"><i class="fa-solid fa-water"></i> Water Bodies</a>
+        <a class="nav-link" data-view="admin-view" onclick="switchView('admin-view')"><i class="fa-solid fa-shield-halved"></i> Admin Portal</a>
+        <a class="nav-link" data-view="profile-view" onclick="switchView('profile-view')"><i class="fa-solid fa-user-astronaut"></i> My Profile</a>
+      </nav>
+
+      <!-- Auth Controls & Quick Demo Switcher -->
+      <div class="nav-actions">
+        <div id="auth-status-container">
+          <!-- Populated dynamically by JS -->
+          <button class="btn btn-primary btn-sm" onclick="openAuthModal()"><i class="fa-solid fa-right-to-bracket"></i> Sign In / Demo</button>
+        </div>
+        <button class="mobile-toggle" onclick="toggleMobileNav()"><i class="fa-solid fa-bars"></i></button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       MAIN DYNAMIC CONTAINER (8 INTERCONNECTED VIEWS)
+       ========================================================================== -->
+  <main class="main-content">
+
+    <!-- ==========================================
+         VIEW 1: LANDING & OVERVIEW PAGE
+         ========================================== -->
+    <section id="landing-view" class="view-section active">
+      <!-- Hero Banner -->
+      <div class="hero-wrapper">
+        <div class="hero-content">
+          <div class="partner-pills">
+            <span class="badge-partner"><i class="fa-solid fa-handshake"></i> Unified Mentor Collaborating Project</span>
+            <span class="badge-partner"><i class="fa-solid fa-globe"></i> UNEP SDG 6.3.2</span>
+            <span class="badge-partner"><i class="fa-solid fa-leaf"></i> WWF Freshwater Practice</span>
+            <span class="badge-partner"><i class="fa-solid fa-droplet"></i> Global Water Watch</span>
+          </div>
+          <h1 class="hero-title">Protecting Our Freshwater <br><span class="gradient-text">Through Citizen Science.</span></h1>
+          <p class="hero-subtitle">
+            Rivers, lakes, and community ponds sustain ecosystems and human life—yet industrial runoff, untreated sewage, and plastic waste go undetected. AquaSentinel empowers citizens to spot, photograph, and geo-tag freshwater pollution incidents in real time.
+          </p>
+          <div class="hero-actions">
+            <button class="btn btn-primary" onclick="switchView('report-view')"><i class="fa-solid fa-camera"></i> Report Pollution Incident</button>
+            <button class="btn btn-outline" onclick="switchView('map-view')"><i class="fa-solid fa-map"></i> Explore GIS Map</button>
+            <button class="btn btn-outline" onclick="switchView('community-view')"><i class="fa-solid fa-comments"></i> Browse Community Feed</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Live KPI Counters -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fa-solid fa-water"></i></div>
+          <div class="stat-info">
+            <h3 id="stat-waterbodies-count">8</h3>
+            <p>Monitored Water Bodies</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fa-solid fa-file-waveform"></i></div>
+          <div class="stat-info">
+            <h3 id="stat-reports-count">14</h3>
+            <p>Pollution Reports Filed</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fa-solid fa-circle-check"></i></div>
+          <div class="stat-info">
+            <h3 id="stat-verified-count">9</h3>
+            <p>Verified Incident Alerts</p>
+          </div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-icon"><i class="fa-solid fa-users-viewfinder"></i></div>
+          <div class="stat-info">
+            <h3 id="stat-citizens-count">48</h3>
+            <p>Active Citizen Scientists</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Why Freshwater Monitoring Matters -->
+      <div style="margin-bottom: 3rem;">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title"><i class="fa-solid fa-biohazard" style="color: var(--primary-cyan);"></i> Urgent Freshwater Threats We Track</h2>
+            <p class="section-desc">Observable physical & chemical contamination indicators cataloged by our platform.</p>
+          </div>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+          <div class="stat-card" style="flex-direction: column; align-items: flex-start;">
+            <div style="font-size: 1.8rem; margin-bottom: 0.5rem; color: #f87171;"><i class="fa-solid fa-industry"></i></div>
+            <h4 style="font-size: 1.1rem; margin-bottom: 0.4rem;">Industrial & Chemical Effluent</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Illegal direct discharge of surfactants, heavy metals, and dyes leading to toxic foam formation, chemical odor, and massive fish kills.</p>
+          </div>
+
+          <div class="stat-card" style="flex-direction: column; align-items: flex-start;">
+            <div style="font-size: 1.8rem; margin-bottom: 0.5rem; color: #fbbf24;"><i class="fa-solid fa-toilet"></i></div>
+            <h4 style="font-size: 1.1rem; margin-bottom: 0.4rem;">Untreated Domestic Sewage</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Municipal sewer bypass and drain overflow causing septic stench, extreme coliform bacteria, and severe dissolved oxygen starvation.</p>
+          </div>
+
+          <div class="stat-card" style="flex-direction: column; align-items: flex-start;">
+            <div style="font-size: 1.8rem; margin-bottom: 0.5rem; color: #38bdf8;"><i class="fa-solid fa-bottle-water"></i></div>
+            <h4 style="font-size: 1.1rem; margin-bottom: 0.4rem;">Plastic Debris & Solid Waste</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Single-use plastics, packaging materials, and discarded styrofoam choking stormwater canals, trapping aquatic waterfowl and degrading into microplastics.</p>
+          </div>
+
+          <div class="stat-card" style="flex-direction: column; align-items: flex-start;">
+            <div style="font-size: 1.8rem; margin-bottom: 0.5rem; color: #34d399;"><i class="fa-solid fa-seedling"></i></div>
+            <h4 style="font-size: 1.1rem; margin-bottom: 0.4rem;">Algal Blooms & Runoff</h4>
+            <p style="font-size: 0.85rem; color: var(--text-muted);">Excessive nitrate and phosphate agricultural fertilizer wash-off sparking dense microcystin algal carpets and anoxic dead zones.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Water Bodies Section -->
+      <div>
+        <div class="section-header">
+          <div>
+            <h2 class="section-title"><i class="fa-solid fa-water"></i> Monitored Freshwater Ecosystems</h2>
+            <p class="section-desc">Key rivers, lakes, and reservoirs actively monitored with baseline water metrics.</p>
+          </div>
+          <button class="btn btn-outline btn-sm" onclick="switchView('directory-view')">View All Directory <i class="fa-solid fa-arrow-right"></i></button>
+        </div>
+        <div id="landing-waterbodies-grid" class="reports-grid">
+          <!-- Loaded dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         VIEW 2: INTERACTIVE GIS WATER BODY MAP PAGE
+         ========================================== -->
+    <section id="map-view" class="view-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title"><i class="fa-solid fa-map-location-dot" style="color: var(--primary-cyan);"></i> Interactive Water Body GIS Map</h2>
+          <p class="section-desc">Spatial distribution of monitored freshwater bodies, real-time pollution pins, and click-to-report integration.</p>
+        </div>
+        <div style="display: flex; gap: 0.5rem;">
+          <button class="btn btn-primary btn-sm" onclick="locateUser()"><i class="fa-solid fa-location-crosshairs"></i> My Location</button>
+          <button class="btn btn-outline btn-sm" onclick="switchView('report-view')"><i class="fa-solid fa-plus"></i> Report Incident</button>
+        </div>
+      </div>
+
+      <div class="map-view-wrapper">
+        <!-- Controls & Filters -->
+        <div class="map-controls-bar">
+          <div class="map-filters">
+            <select id="map-filter-type" class="filter-select" onchange="filterMapMarkers()">
+              <option value="All">All Water Body Types</option>
+              <option value="Lake">Lakes</option>
+              <option value="River">Rivers</option>
+              <option value="Pond">Ponds / Reservoirs</option>
+            </select>
+
+            <select id="map-filter-severity" class="filter-select" onchange="filterMapMarkers()">
+              <option value="All">All Severity Levels</option>
+              <option value="Critical">Critical Emergency</option>
+              <option value="High">High Hazard</option>
+              <option value="Moderate">Moderate Concern</option>
+              <option value="Low">Low / Good</option>
+            </select>
+
+            <input type="text" id="map-search" class="search-input" placeholder="Search by name or city..." onkeyup="filterMapMarkers()">
+          </div>
+
+          <div style="font-size: 0.85rem; color: var(--primary-cyan);">
+            <i class="fa-solid fa-circle-info"></i> Tip: Click anywhere on the map to file a report at those coordinates!
+          </div>
+        </div>
+
+        <!-- Leaflet Map Container -->
+        <div id="leaflet-map"></div>
+
+        <!-- Map Legend -->
+        <div class="map-legend">
+          <div class="legend-item"><span class="legend-dot critical"></span> Critical Hazard (Severe Foam, Raw Sewage, Anoxia)</div>
+          <div class="legend-item"><span class="legend-dot high"></span> High Hazard (Algal Bloom, Chemical Runoff)</div>
+          <div class="legend-item"><span class="legend-dot moderate"></span> Moderate (Plastics, Turbidity)</div>
+          <div class="legend-item"><span class="legend-dot good"></span> Healthy / Low Concern</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         VIEW 3: POLLUTION REPORT SUBMISSION PAGE
+         ========================================== -->
+    <section id="report-view" class="view-section">
+      <div class="form-container">
+        <div style="margin-bottom: 1.5rem; text-align: center;">
+          <h2 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 0.4rem;">
+            <i class="fa-solid fa-triangle-exclamation" style="color: var(--severity-high);"></i> Submit Freshwater Pollution Report
+          </h2>
+          <p style="font-size: 0.92rem; color: var(--text-muted);">
+            Provide accurate visual, sensory, and photographic evidence. Your observation will be immediately dispatched to the community feed and environmental monitoring teams.
+          </p>
+        </div>
+
+        <form id="pollution-report-form" onsubmit="handleReportSubmission(event)">
+          <div class="form-grid">
+            
+            <!-- Water Body Selection -->
+            <div class="form-group">
+              <label for="form-waterbody">Monitored Freshwater Body <span class="required">*</span></label>
+              <select id="form-waterbody" class="form-control" required onchange="handleWaterBodySelectionChange()">
+                <option value="">-- Select Water Body --</option>
+                <!-- Populated via API -->
+              </select>
+            </div>
+
+            <!-- Pollution Type -->
+            <div class="form-group">
+              <label for="form-pollution-type">Pollution Category <span class="required">*</span></label>
+              <select id="form-pollution-type" class="form-control" required>
+                <option value="Industrial Effluent">Industrial Effluent (Chemicals, Dyes, Toxic Foam)</option>
+                <option value="Domestic Sewage">Domestic Sewage (Raw Sewage, Black Water, Septic)</option>
+                <option value="Plastic Waste">Plastic & Solid Waste (Bottles, Styrofoam, Nets)</option>
+                <option value="Agricultural Fertilizer">Agricultural Runoff (Algae, Microcystis Bloom)</option>
+                <option value="Chemical Runoff">Chemical Runoff (Oil Sheen, Solvents, Detergents)</option>
+                <option value="Heavy Siltation">Heavy Siltation (Muddy Clay, Construction Runoff)</option>
+              </select>
+            </div>
+
+            <!-- Incident Title -->
+            <div class="form-group full-width">
+              <label for="form-title">Incident Title / Summary <span class="required">*</span></label>
+              <input type="text" id="form-title" class="form-control" placeholder="e.g. Dense white foam billowing near northern culvert discharge" required>
+            </div>
+
+            <!-- Location Details & Coordinates -->
+            <div class="form-group">
+              <label for="form-address">Location Description / Landmark <span class="required">*</span></label>
+              <input type="text" id="form-address" class="form-control" placeholder="e.g. Tank Bund Road, 100m west of sluice gate" required>
+            </div>
+
+            <div class="form-group">
+              <label>GPS Coordinates</label>
+              <div style="display: flex; gap: 0.5rem;">
+                <input type="number" step="any" id="form-latitude" class="form-control" placeholder="Latitude (e.g. 17.4239)" required>
+                <input type="number" step="any" id="form-longitude" class="form-control" placeholder="Longitude (e.g. 78.4738)" required>
+                <button type="button" class="btn btn-outline btn-sm" onclick="detectGPSLocation()" title="Detect My Current GPS Location"><i class="fa-solid fa-location-crosshairs"></i> GPS</button>
+              </div>
+            </div>
+
+            <!-- Severity Scale -->
+            <div class="form-group full-width">
+              <label>Estimated Pollution Severity <span class="required">*</span></label>
+              <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                <label style="flex: 1; min-width: 130px; cursor: pointer;">
+                  <input type="radio" name="severity-radio" value="Low" onchange="updateSeverityBadge('Low')">
+                  <span class="severity-tag low" style="position: static; display: block; text-align: center; margin-top: 4px;">Low / Minor</span>
+                </label>
+                <label style="flex: 1; min-width: 130px; cursor: pointer;">
+                  <input type="radio" name="severity-radio" value="Moderate" checked onchange="updateSeverityBadge('Moderate')">
+                  <span class="severity-tag moderate" style="position: static; display: block; text-align: center; margin-top: 4px;">Moderate</span>
+                </label>
+                <label style="flex: 1; min-width: 130px; cursor: pointer;">
+                  <input type="radio" name="severity-radio" value="High" onchange="updateSeverityBadge('High')">
+                  <span class="severity-tag high" style="position: static; display: block; text-align: center; margin-top: 4px;">High Hazard</span>
+                </label>
+                <label style="flex: 1; min-width: 130px; cursor: pointer;">
+                  <input type="radio" name="severity-radio" value="Critical" onchange="updateSeverityBadge('Critical')">
+                  <span class="severity-tag critical" style="position: static; display: block; text-align: center; margin-top: 4px;">Critical Emergency</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Physical Observations (Sensory Indicators) -->
+            <div class="form-group">
+              <label>Observed Water Color</label>
+              <select id="form-water-color" class="form-control">
+                <option value="Murky Brown">Murky Brown (Sediment/Runoff)</option>
+                <option value="Vibrant Pea Green / Algae">Vibrant Green / Algal Bloom</option>
+                <option value="Milky / Foamy White">Milky / Foamy White (Surfactants/Detergents)</option>
+                <option value="Dark Grey / Black">Dark Grey / Black (Septic Sewage)</option>
+                <option value="Oily Rainbow Sheen">Oily Rainbow Sheen (Petroleum/Fuel)</option>
+                <option value="Clear">Clear / Transparent</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label>Observed Odor</label>
+              <select id="form-odor" class="form-control">
+                <option value="None / Natural Earthy">None / Natural Earthy</option>
+                <option value="Chemical / Pungent">Chemical / Pungent / Acrid</option>
+                <option value="Septic / Sewage">Septic / Rotten Egg / Sewage</option>
+                <option value="Fishy / Decaying Organics">Fishy / Decaying Aquatic Life</option>
+                <option value="Stagnant Mild">Stagnant Mild</option>
+              </select>
+            </div>
+
+            <!-- Scientific Lab Metrics (Optional) -->
+            <div class="form-group">
+              <label>Water pH Level <small style="color: var(--text-dim);">(Normal: 6.5 - 8.5)</small></label>
+              <input type="number" step="0.1" min="0" max="14" id="form-ph" class="form-control" placeholder="e.g. 8.6">
+            </div>
+
+            <div class="form-group">
+              <label>Dissolved Oxygen (DO mg/L) <small style="color: var(--text-dim);">(Healthy > 5.0)</small></label>
+              <input type="number" step="0.1" min="0" max="20" id="form-do" class="form-control" placeholder="e.g. 2.1">
+            </div>
+
+            <!-- Photo / Evidence Upload -->
+            <div class="form-group full-width">
+              <label>Photographic Evidence <span class="required">*</span></label>
+              <div class="image-preview-box" id="image-upload-dropzone" onclick="document.getElementById('evidence-file-input').click()">
+                <div id="dropzone-prompt" style="text-align: center; padding: 1rem;">
+                  <i class="fa-solid fa-cloud-arrow-up" style="font-size: 2.2rem; color: var(--primary-cyan); margin-bottom: 0.5rem;"></i>
+                  <p style="font-weight: 600; font-size: 0.95rem;">Click or Drag & Drop Photo Evidence</p>
+                  <p style="font-size: 0.78rem; color: var(--text-dim);">Supports JPG, PNG, WEBP (Max 8MB)</p>
+                </div>
+                <img id="image-preview-display" style="display: none;" alt="Evidence Preview">
+              </div>
+              <input type="file" id="evidence-file-input" accept="image/*" style="display: none;" onchange="handleFileSelect(event)">
+              
+              <!-- Direct Image URL fallback -->
+              <div style="margin-top: 0.6rem;">
+                <input type="url" id="form-image-url" class="form-control" placeholder="Or paste an image web link (URL) directly..." oninput="handleImageUrlInput(this.value)">
+              </div>
+            </div>
+
+            <!-- Detailed Description -->
+            <div class="form-group full-width">
+              <label for="form-description">Detailed Incident Narrative & Environmental Impact <span class="required">*</span></label>
+              <textarea id="form-description" class="form-control" placeholder="Describe the scale of contamination, nearby animal/bird life impact, presence of dead fish, flow direction, and any visible commercial outfall pipes..." required></textarea>
+            </div>
+
+            <!-- Declaration Checkbox -->
+            <div class="form-group full-width" style="display: flex; align-items: flex-start; gap: 0.75rem;">
+              <input type="checkbox" id="form-declaration" required style="margin-top: 0.25rem;">
+              <label for="form-declaration" style="font-size: 0.82rem; color: var(--text-muted); cursor: pointer;">
+                I declare that this observation represents a genuine freshwater condition observed in person, submitted for scientific community monitoring and public environmental protection.
+              </label>
+            </div>
+
+          </div>
+
+          <div style="margin-top: 1.5rem; display: flex; justify-content: flex-end; gap: 1rem;">
+            <button type="button" class="btn btn-outline" onclick="switchView('community-view')">Cancel</button>
+            <button type="submit" id="btn-submit-report" class="btn btn-primary"><i class="fa-solid fa-paper-plane"></i> Publish Incident Report</button>
+          </div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         VIEW 4: COMMUNITY REPORTS DASHBOARD & LIVE FEED
+         ========================================== -->
+    <section id="community-view" class="view-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title"><i class="fa-solid fa-users" style="color: var(--primary-cyan);"></i> Community Reports Dashboard</h2>
+          <p class="section-desc">Crowdsourced observations submitted by citizens, verified by local communities, and escalated for remediation.</p>
+        </div>
+        <button class="btn btn-primary btn-sm" onclick="switchView('report-view')"><i class="fa-solid fa-plus"></i> File New Incident</button>
+      </div>
+
+      <!-- Filters & Sorting Bar -->
+      <div class="map-controls-bar" style="border-radius: var(--radius-sm); margin-bottom: 1.5rem;">
+        <div class="map-filters">
+          <select id="feed-filter-status" class="filter-select" onchange="loadReports()">
+            <option value="All">All Statuses</option>
+            <option value="Verified">Verified Reports</option>
+            <option value="Under Investigation">Under Investigation</option>
+            <option value="Pending">Pending Verification</option>
+            <option value="Resolved">Resolved Incidents</option>
+          </select>
+
+          <select id="feed-filter-severity" class="filter-select" onchange="loadReports()">
+            <option value="All">All Severities</option>
+            <option value="Critical">Critical</option>
+            <option value="High">High</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Low">Low</option>
+          </select>
+
+          <select id="feed-filter-waterbody" class="filter-select" onchange="loadReports()">
+            <option value="All">All Water Bodies</option>
+            <!-- Injected via JS -->
+          </select>
+
+          <select id="feed-sort" class="filter-select" onchange="loadReports()">
+            <option value="newest">Sort: Newest First</option>
+            <option value="severity">Sort: Highest Severity</option>
+            <option value="endorsements">Sort: Most Endorsed</option>
+          </select>
+
+          <input type="text" id="feed-search" class="search-input" placeholder="Search reports..." onkeyup="debounceSearchReports()">
+        </div>
+      </div>
+
+      <!-- Reports Dynamic Cards Grid -->
+      <div id="community-reports-grid" class="reports-grid">
+        <!-- Rendered by JS -->
+      </div>
+    </section>
+
+    <!-- ==========================================
+         VIEW 5: WATER BODY DIRECTORY & HEALTH PROFILES
+         ========================================== -->
+    <section id="directory-view" class="view-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title"><i class="fa-solid fa-water" style="color: var(--primary-cyan);"></i> Monitored Freshwater Body Registry</h2>
+          <p class="section-desc">Hydrological baselines, ecological threat indexes, and historical records for cataloged ecosystems.</p>
+        </div>
+      </div>
+
+      <!-- Filter Controls -->
+      <div class="map-controls-bar" style="border-radius: var(--radius-sm); margin-bottom: 1.5rem;">
+        <div class="map-filters">
+          <select id="directory-filter-type" class="filter-select" onchange="loadWaterBodiesDirectory()">
+            <option value="All">All Categories (Rivers & Lakes)</option>
+            <option value="Lake">Lakes</option>
+            <option value="River">Rivers</option>
+          </select>
+
+          <select id="directory-filter-health" class="filter-select" onchange="loadWaterBodiesDirectory()">
+            <option value="All">All Health Ratings</option>
+            <option value="Good">Good</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Poor">Poor</option>
+            <option value="Critical">Critical</option>
+          </select>
+
+          <input type="text" id="directory-search" class="search-input" placeholder="Search by name, city, state..." onkeyup="loadWaterBodiesDirectory()">
+        </div>
+      </div>
+
+      <div id="water-bodies-directory-grid" class="reports-grid">
+        <!-- Rendered dynamically -->
+      </div>
+    </section>
+
+    <!-- ==========================================
+         VIEW 6: USER PROFILE & CITIZEN SCIENTIST DASHBOARD
+         ========================================== -->
+    <section id="profile-view" class="view-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title"><i class="fa-solid fa-user-astronaut" style="color: var(--primary-cyan);"></i> Citizen Scientist Profile</h2>
+          <p class="section-desc">Your environmental stewardship history, verified contributions, and earned scientific badges.</p>
+        </div>
+        <button class="btn btn-primary btn-sm" onclick="switchView('report-view')"><i class="fa-solid fa-plus"></i> File Incident</button>
+      </div>
+
+      <div style="display: grid; grid-template-columns: 340px 1fr; gap: 1.5rem;" class="profile-layout-grid">
+        <!-- User Bio Card -->
+        <div class="stat-card" style="flex-direction: column; align-items: center; text-align: center; padding: 2.2rem 1.5rem;">
+          <div style="width: 88px; height: 88px; border-radius: 50%; background: linear-gradient(135deg, var(--primary-cyan), var(--accent-emerald)); display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 1rem; box-shadow: 0 0 20px rgba(6, 182, 212, 0.4);">
+            🌱
+          </div>
+          <h3 id="profile-name" style="font-size: 1.4rem; font-weight: 800; margin-bottom: 0.2rem;">Priya Sharma</h3>
+          <p id="profile-email" style="font-size: 0.88rem; color: var(--text-muted); margin-bottom: 0.6rem;">priya@earthguard.org</p>
+          <span id="profile-role-badge" class="badge-partner" style="margin-bottom: 1rem;"><i class="fa-solid fa-badge-check"></i> Citizen Scientist</span>
+          
+          <div style="width: 100%; border-top: 1px solid rgba(255, 255, 255, 0.08); padding-top: 1rem; margin-top: 0.5rem; text-align: left;">
+            <p style="font-size: 0.82rem; color: var(--text-dim); margin-bottom: 0.3rem;">Affiliation / Organization:</p>
+            <p id="profile-org" style="font-size: 0.92rem; font-weight: 600; color: var(--text-main); margin-bottom: 1rem;">Hyderabad Lake Protectors</p>
+
+            <p style="font-size: 0.82rem; color: var(--text-dim); margin-bottom: 0.3rem;">Reputation Karma Score:</p>
+            <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem;">
+              <div style="flex: 1; height: 8px; background: #091726; border-radius: 4px; overflow: hidden;">
+                <div id="karma-bar" style="width: 65%; height: 100%; background: linear-gradient(90deg, var(--primary-cyan), var(--accent-emerald));"></div>
+              </div>
+              <span id="profile-karma" style="font-weight: 700; color: var(--primary-cyan); font-size: 0.95rem;">340 pts</span>
+            </div>
+
+            <p style="font-size: 0.82rem; color: var(--text-dim); margin-bottom: 0.5rem;">Earned Citizen Badges:</p>
+            <div id="profile-badges-container" style="display: flex; flex-wrap: wrap; gap: 0.4rem;">
+              <span class="badge-partner">🌊 River Guardian</span>
+              <span class="badge-partner">⚡ First Responder</span>
+              <span class="badge-partner">🔬 Water Inspector</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- User's Submitted Reports Ledger -->
+        <div>
+          <div style="background: var(--card-bg); border: 1px solid var(--card-border); border-radius: var(--radius-md); padding: 1.5rem; margin-bottom: 1.5rem;">
+            <h3 style="font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem;">My Submitted Environmental Incidents</h3>
+            <p style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 1.25rem;">
+              Audit trail of freshwater observations filed from your citizen account.
+            </p>
+            <div id="my-reports-list" class="reports-grid" style="grid-template-columns: 1fr;">
+              <!-- Populated by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==========================================
+         VIEW 7: ADMIN ENVIRONMENTAL TRIAGE PANEL
+         ========================================== -->
+    <section id="admin-view" class="view-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title"><i class="fa-solid fa-shield-halved" style="color: var(--primary-cyan);"></i> Environmental Administration & Triage Panel</h2>
+          <p class="section-desc">Incident verification queue, authority escalation, water body registry manager, and compliance export.</p>
+        </div>
+        <div style="display: flex; gap: 0.6rem;">
+          <button class="btn btn-outline btn-sm" onclick="exportDataCSV()"><i class="fa-solid fa-file-csv"></i> Export CSV Data</button>
+          <button class="btn btn-primary btn-sm" onclick="openAddWaterBodyModal()"><i class="fa-solid fa-plus"></i> Add Water Body</button>
+        </div>
+      </div>
+
+      <!-- Admin Status Alert Banner -->
+      <div id="admin-access-alert" style="background: rgba(6, 182, 212, 0.12); border: 1px solid var(--primary-cyan); border-radius: var(--radius-sm); padding: 0.85rem 1.25rem; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between;">
+        <div style="display: flex; align-items: center; gap: 0.75rem;">
+          <i class="fa-solid fa-user-shield" style="font-size: 1.4rem; color: var(--primary-cyan);"></i>
+          <div>
+            <div style="font-weight: 700; font-size: 0.95rem;">Administrative Access Active: Dr. Rajesh Rao (Admin)</div>
+            <div style="font-size: 0.82rem; color: var(--text-muted);">State Pollution Control Board & UNEP Collaborating Officer</div>
+          </div>
+        </div>
+        <span class="badge-partner" style="background: rgba(16, 185, 129, 0.2); color: #34d399; border-color: #34d399;">Authorized Verifier</span>
+      </div>
+
+      <!-- Analytics Charts Grid (Chart.js) -->
+      <div class="analytics-charts-grid">
+        <div class="chart-card">
+          <h4><i class="fa-solid fa-chart-pie" style="color: var(--primary-cyan);"></i> Pollution Breakdown by Category</h4>
+          <div style="position: relative; height: 260px;">
+            <canvas id="chart-pollution-types"></canvas>
+          </div>
+        </div>
+        <div class="chart-card">
+          <h4><i class="fa-solid fa-chart-column" style="color: var(--accent-emerald);"></i> Incidents by Severity Level</h4>
+          <div style="position: relative; height: 260px;">
+            <canvas id="chart-severity-levels"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Incident Moderation Table -->
+      <div class="admin-table-wrapper">
+        <div style="padding: 1.25rem; border-bottom: 1px solid var(--card-border); display: flex; justify-content: space-between; align-items: center;">
+          <h4 style="font-size: 1.1rem; font-weight: 700;"><i class="fa-solid fa-clipboard-check"></i> Incident Verification & Triage Queue</h4>
+          <span style="font-size: 0.82rem; color: var(--text-dim);">Live Database Synchronization</span>
+        </div>
+        <table class="custom-table">
+          <thead>
+            <tr>
+              <th>ID</th>
+              <th>Water Body</th>
+              <th>Category</th>
+              <th>Severity</th>
+              <th>Reporter</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th style="text-align: right;">Moderation Actions</th>
+            </tr>
+          </thead>
+          <tbody id="admin-reports-table-body">
+            <!-- Populated via JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ==========================================================================
+       MODAL 1: REPORT DETAILS & COMMUNITY DISCUSSION LIGHTBOX
+       ========================================================================== -->
+  <div id="report-detail-modal" class="modal-overlay">
+    <div class="modal-box">
+      <div class="modal-header">
+        <div style="display: flex; align-items: center; gap: 0.5rem;">
+          <span id="modal-report-severity" class="severity-tag moderate" style="position: static;">Moderate</span>
+          <h3 id="modal-report-title" style="font-size: 1.15rem; font-weight: 700;">Incident Report Details</h3>
+        </div>
+        <button class="modal-close-btn" onclick="closeModal('report-detail-modal')">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.5rem;" class="modal-detail-grid">
+          <!-- Evidence Image -->
+          <div style="border-radius: var(--radius-sm); overflow: hidden; height: 260px; background: #000; border: 1px solid var(--card-border);">
+            <img id="modal-report-image" src="" alt="Evidence" style="width: 100%; height: 100%; object-fit: cover;">
+          </div>
+
+          <!-- Parameter Summary & Location -->
+          <div>
+            <div style="font-size: 0.85rem; color: var(--primary-cyan); font-weight: 700; margin-bottom: 0.2rem;" id="modal-report-waterbody">Hussain Sagar Lake</div>
+            <div style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 0.75rem;" id="modal-report-location"><i class="fa-solid fa-location-dot"></i> Tank Bund Road</div>
+            
+            <!-- Observations Scorecard -->
+            <div style="background: rgba(9, 23, 38, 0.7); border: 1px solid var(--card-border); border-radius: var(--radius-sm); padding: 0.85rem; font-size: 0.82rem; margin-bottom: 0.85rem;">
+              <div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;">
+                <span style="color: var(--text-dim);">Water Color:</span>
+                <strong id="modal-water-color" style="color: var(--text-main);">Milky White</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;">
+                <span style="color: var(--text-dim);">Odor:</span>
+                <strong id="modal-odor" style="color: var(--text-main);">Chemical Pungent</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between; margin-bottom: 0.35rem;">
+                <span style="color: var(--text-dim);">pH Level:</span>
+                <strong id="modal-ph" style="color: var(--primary-cyan);">8.8 (Alkaline)</strong>
+              </div>
+              <div style="display: flex; justify-content: space-between;">
+                <span style="color: var(--text-dim);">Dissolved Oxygen:</span>
+                <strong id="modal-do" style="color: var(--severity-critical);">1.6 mg/L (Critical)</strong>
+              </div>
+            </div>
+
+            <div style="display: flex; align-items: center; justify-content: space-between;">
+              <span id="modal-status-badge" class="status-badge status-verified">Verified</span>
+              <button id="modal-btn-endorse" class="btn btn-outline btn-sm" onclick="endorseActiveReport()"><i class="fa-solid fa-thumbs-up"></i> Confirm (<span id="modal-endorse-count">0</span>)</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Description Narrative -->
+        <div style="margin-bottom: 1.5rem;">
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.4rem; color: var(--text-main);">Incident Narrative</h4>
+          <p id="modal-report-desc" style="font-size: 0.9rem; color: var(--text-muted); line-height: 1.6;"></p>
+        </div>
+
+        <!-- Official Authority Response Action -->
+        <div style="background: rgba(6, 182, 212, 0.08); border-left: 4px solid var(--primary-cyan); padding: 0.85rem 1rem; border-radius: 4px; margin-bottom: 1.5rem;">
+          <div style="font-weight: 700; font-size: 0.85rem; color: var(--primary-cyan); margin-bottom: 0.2rem;"><i class="fa-solid fa-building-shield"></i> Official Authority Action Status:</div>
+          <p id="modal-authority-notes" style="font-size: 0.85rem; color: var(--text-main);">PCB Inspection Team dispatched; containment booms deployed.</p>
+        </div>
+
+        <!-- Community Discussion / Comments Thread -->
+        <div style="border-top: 1px solid var(--card-border); padding-top: 1.25rem;">
+          <h4 style="font-size: 0.95rem; font-weight: 700; margin-bottom: 0.85rem;"><i class="fa-solid fa-comments"></i> Community Field Verification Thread</h4>
+          
+          <div id="modal-comments-list" style="display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 1rem; max-height: 200px; overflow-y: auto;">
+            <!-- Comments injected by JS -->
+          </div>
+
+          <!-- Add Comment Form -->
+          <div style="display: flex; gap: 0.5rem;">
+            <input type="text" id="modal-comment-input" class="form-control" placeholder="Add field observation or status confirmation..." onkeydown="if(event.key === 'Enter') postComment()">
+            <button class="btn btn-primary btn-sm" onclick="postComment()"><i class="fa-solid fa-paper-plane"></i> Comment</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 2: AUTHENTICATION & QUICK DEMO SWITCHER
+       ========================================================================== -->
+  <div id="auth-modal" class="modal-overlay">
+    <div class="modal-box" style="max-width: 520px;">
+      <div class="modal-header">
+        <h3 style="font-size: 1.2rem; font-weight: 700;"><i class="fa-solid fa-user-lock"></i> Account Access & Demo Roles</h3>
+        <button class="modal-close-btn" onclick="closeModal('auth-modal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        
+        <!-- One-Click Demo Switcher -->
+        <div style="background: rgba(6, 182, 212, 0.1); border: 1px dashed var(--primary-cyan); border-radius: var(--radius-sm); padding: 1rem; margin-bottom: 1.5rem; text-align: center;">
+          <p style="font-size: 0.82rem; font-weight: 700; color: var(--primary-cyan); margin-bottom: 0.6rem; text-transform: uppercase; letter-spacing: 0.05em;">
+            ⚡ Quick 1-Click Evaluation Logins
+          </p>
+          <div style="display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap;">
+            <button class="btn btn-primary btn-sm" onclick="demoLogin('citizen')"><i class="fa-solid fa-seedling"></i> Demo Citizen (Priya)</button>
+            <button class="btn btn-outline btn-sm" onclick="demoLogin('admin')"><i class="fa-solid fa-shield-halved"></i> Demo Admin (Dr. Rao)</button>
+          </div>
+        </div>
+
+        <!-- Auth Tabs -->
+        <div style="display: flex; border-bottom: 1px solid var(--card-border); margin-bottom: 1.25rem;">
+          <button id="tab-login" class="nav-link active" style="flex: 1; text-align: center; justify-content: center;" onclick="switchAuthTab('login')">Sign In</button>
+          <button id="tab-register" class="nav-link" style="flex: 1; text-align: center; justify-content: center;" onclick="switchAuthTab('register')">Register New Citizen</button>
+        </div>
+
+        <!-- Login Form -->
+        <form id="login-form" onsubmit="handleUserLogin(event)">
+          <div class="form-group">
+            <label for="login-email">Email Address</label>
+            <input type="email" id="login-email" class="form-control" placeholder="e.g. priya@earthguard.org" required>
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <input type="password" id="login-password" class="form-control" placeholder="••••••••" required>
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;"><i class="fa-solid fa-right-to-bracket"></i> Sign In to Platform</button>
+        </form>
+
+        <!-- Register Form -->
+        <form id="register-form" style="display: none;" onsubmit="handleUserRegister(event)">
+          <div class="form-group">
+            <label for="reg-name">Full Name</label>
+            <input type="text" id="reg-name" class="form-control" placeholder="e.g. Anand Varma" required>
+          </div>
+          <div class="form-group">
+            <label for="reg-email">Email Address</label>
+            <input type="email" id="reg-email" class="form-control" placeholder="e.g. anand@riverwatch.org" required>
+          </div>
+          <div class="form-group">
+            <label for="reg-password">Password (Min 6 chars)</label>
+            <input type="password" id="reg-password" class="form-control" placeholder="••••••••" required minlength="6">
+          </div>
+          <div class="form-group">
+            <label for="reg-org">Organization / Community Group</label>
+            <input type="text" id="reg-org" class="form-control" placeholder="e.g. Friends of Dal Lake, Student, Resident">
+          </div>
+          <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 0.5rem;"><i class="fa-solid fa-user-plus"></i> Create Citizen Account</button>
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       MODAL 3: ADD NEW WATER BODY (ADMIN ONLY)
+       ========================================================================== -->
+  <div id="add-waterbody-modal" class="modal-overlay">
+    <div class="modal-box" style="max-width: 650px;">
+      <div class="modal-header">
+        <h3 style="font-size: 1.2rem; font-weight: 700;"><i class="fa-solid fa-water"></i> Register New Freshwater Body</h3>
+        <button class="modal-close-btn" onclick="closeModal('add-waterbody-modal')">&times;</button>
+      </div>
+      <div class="modal-body">
+        <form id="add-waterbody-form" onsubmit="handleAddWaterBody(event)">
+          <div class="form-grid">
+            <div class="form-group">
+              <label for="wb-name">Water Body Name <span class="required">*</span></label>
+              <input type="text" id="wb-name" class="form-control" placeholder="e.g. Chilika Lake" required>
+            </div>
+            <div class="form-group">
+              <label for="wb-type">Classification <span class="required">*</span></label>
+              <select id="wb-type" class="form-control" required>
+                <option value="Lake">Lake</option>
+                <option value="River">River</option>
+                <option value="Pond">Pond</option>
+                <option value="Reservoir">Reservoir</option>
+                <option value="Wetland">Wetland</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="wb-city">City / District <span class="required">*</span></label>
+              <input type="text" id="wb-city" class="form-control" placeholder="e.g. Puri" required>
+            </div>
+            <div class="form-group">
+              <label for="wb-state">State / Region <span class="required">*</span></label>
+              <input type="text" id="wb-state" class="form-control" placeholder="e.g. Odisha" required>
+            </div>
+            <div class="form-group">
+              <label for="wb-lat">Latitude <span class="required">*</span></label>
+              <input type="number" step="any" id="wb-lat" class="form-control" placeholder="e.g. 19.702" required>
+            </div>
+            <div class="form-group">
+              <label for="wb-lng">Longitude <span class="required">*</span></label>
+              <input type="number" step="any" id="wb-lng" class="form-control" placeholder="e.g. 85.318" required>
+            </div>
+            <div class="form-group">
+              <label for="wb-health">Health Status</label>
+              <select id="wb-health" class="form-control">
+                <option value="Good">Good</option>
+                <option value="Moderate" selected>Moderate</option>
+                <option value="Poor">Poor</option>
+                <option value="Critical">Critical</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="wb-threats">Primary Ecological Threats</label>
+              <input type="text" id="wb-threats" class="form-control" placeholder="e.g. Siltation, Tourism Runoff">
+            </div>
+            <div class="form-group full-width">
+              <label for="wb-desc">Description & Hydrological Basin Notes</label>
+              <textarea id="wb-desc" class="form-control" placeholder="Ecological importance, surface area, and primary feeder channels..."></textarea>
+            </div>
+          </div>
+          <div style="margin-top: 1.25rem; display: flex; justify-content: flex-end; gap: 0.75rem;">
+            <button type="button" class="btn btn-outline" onclick="closeModal('add-waterbody-modal')">Cancel</button>
+            <button type="submit" class="btn btn-primary"><i class="fa-solid fa-save"></i> Save Water Body</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container"></div>
+
+  <!-- ==========================================================================
+       FOOTER
+       ========================================================================== -->
+  <footer class="footer">
+    <div class="footer-container">
+      <div>
+        <div style="font-weight: 700; font-size: 1.05rem; color: var(--text-main); margin-bottom: 0.25rem;">
+          🌊 AquaSentinel Freshwater Community Platform
+        </div>
+        <p>Built for the Unified Mentor Technical Program by Bodicherla Venkata Sai Siva Kumar (B.Tech CSE).</p>
+      </div>
+
+      <div class="footer-links">
+        <a href="https://www.unifiedmentor.com/" target="_blank" rel="noopener">Unified Mentor</a>
+        <a href="https://www.unep.org/" target="_blank" rel="noopener">UNEP SDG 6.3.2</a>
+        <a href="https://www.wwf.org/" target="_blank" rel="noopener">WWF Freshwater</a>
+        <a href="https://www.globalwaterwatch.org/" target="_blank" rel="noopener">Global Water Watch</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- External Script Dependencies: Leaflet GIS & Chart.js -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.2/dist/chart.umd.min.js"></script>
+
+  <!-- Application Frontend Logic -->
+  <script src="js/app.js"></script>
+</body>
+</html>

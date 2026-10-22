@@ -1,0 +1,65 @@
+[
+  {
+    "id": "usr-admin",
+    "fullName": "Dr. Rajesh Rao",
+    "email": "admin@freshwaterwatch.org",
+    "passwordHash": "$2a$10$WFmbpESy/h2Qn.ylnMs.M.wodR4IKxtgN7cZzRSvBx5v8fZW53rrC",
+    "role": "admin",
+    "organization": "State Pollution Control Board & UNEP Partner",
+    "reputationKarma": 980,
+    "badges": [
+      "Senior Hydrologist",
+      "Platform Admin",
+      "Official Verifier"
+    ],
+    "submittedReportsCount": 0,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  },
+  {
+    "id": "usr-priya",
+    "fullName": "Priya Sharma",
+    "email": "priya@earthguard.org",
+    "passwordHash": "$2a$10$hLBuMlp0ZSTKK7AcHiBz7OwNGYHamiCTPr2zewbQe3n2m2i2hzQEC",
+    "role": "citizen",
+    "organization": "Hyderabad Lake Protectors",
+    "reputationKarma": 400,
+    "badges": [
+      "River Guardian",
+      "First Responder",
+      "Water Quality Inspector"
+    ],
+    "submittedReportsCount": 10,
+    "createdAt": "2026-01-10T00:00:00.000Z"
+  },
+  {
+    "id": "usr-david",
+    "fullName": "David Miller",
+    "email": "david@rivercleanup.org",
+    "passwordHash": "$2a$10$hLBuMlp0ZSTKK7AcHiBz7OwNGYHamiCTPr2zewbQe3n2m2i2hzQEC",
+    "role": "citizen",
+    "organization": "Global Freshwater Watch Volunteer",
+    "reputationKarma": 210,
+    "badges": [
+      "Eco Volunteer",
+      "Community Mobilizer"
+    ],
+    "submittedReportsCount": 5,
+    "createdAt": "2026-01-20T00:00:00.000Z"
+  },
+  {
+    "id": "usr-siva",
+    "fullName": "B.V.S. Siva Kumar",
+    "email": "bodicherlavenkatasaisivakumar@gmail.com",
+    "passwordHash": "$2a$10$hLBuMlp0ZSTKK7AcHiBz7OwNGYHamiCTPr2zewbQe3n2m2i2hzQEC",
+    "role": "admin",
+    "organization": "Unified Mentor Technical Fellow",
+    "reputationKarma": 1250,
+    "badges": [
+      "Platform Architect",
+      "Lead Developer",
+      "Eco Innovator"
+    ],
+    "submittedReportsCount": 12,
+    "createdAt": "2026-01-01T00:00:00.000Z"
+  }
+]

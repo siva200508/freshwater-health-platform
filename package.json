@@ -1,0 +1,32 @@
+{
+  "name": "freshwater-body-health-monitoring-platform",
+  "version": "1.0.0",
+  "description": "Community-Driven Freshwater Body Health Monitoring Platform aligned with UNEP, WWF, and Global Water Watch standards for citizen science water reporting and environmental protection.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node tests/api.test.js"
+  },
+  "keywords": [
+    "freshwater",
+    "environmental-monitoring",
+    "water-quality",
+    "citizen-science",
+    "unep",
+    "wwf",
+    "unified-mentor",
+    "leaflet",
+    "community-reporting"
+  ],
+  "author": "Bodicherla Venkata Sai Siva Kumar",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "jsonwebtoken": "^9.0.2",
+    "multer": "^1.4.5-lts.1"
+  }
+}

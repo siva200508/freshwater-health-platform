@@ -1,0 +1,56 @@
+[
+  {
+    "id": "com-001",
+    "reportId": "rep-001",
+    "userId": "usr-admin",
+    "userName": "Dr. Rajesh Rao (Admin)",
+    "userRole": "admin",
+    "comment": "Field inspection team dispatched at 10:45 AM today. Water samples collected for GC-MS lab testing. Booms deployed to restrict plume.",
+    "createdAt": "2026-10-19T05:30:00.000Z"
+  },
+  {
+    "id": "com-002",
+    "reportId": "rep-001",
+    "userId": "usr-david",
+    "userName": "David Miller",
+    "userRole": "citizen",
+    "comment": "I can confirm the foam has subsided slightly near the weir, but the chemical smell is still noticeable around the jogging trail.",
+    "createdAt": "2026-10-19T07:12:00.000Z"
+  },
+  {
+    "id": "com-003",
+    "reportId": "rep-002",
+    "userId": "usr-priya",
+    "userName": "Priya Sharma",
+    "userRole": "citizen",
+    "comment": "This is the third time this month foam has peaked after midnight factory discharge. We need permanent continuous dissolved oxygen sensors here.",
+    "createdAt": "2026-10-19T10:45:00.000Z"
+  },
+  {
+    "id": "com-004",
+    "reportId": "rep-004",
+    "userId": "usr-admin",
+    "userName": "Dr. Rajesh Rao (Admin)",
+    "userRole": "admin",
+    "comment": "Incident successfully addressed. BMC skimmers collected and safely transported the plastics to recycling depot #4. Status marked as Resolved.",
+    "createdAt": "2026-10-15T18:00:00.000Z"
+  },
+  {
+    "id": "com-1792633878431",
+    "reportId": "rep-009",
+    "userId": "usr-priya",
+    "userName": "Priya Sharma",
+    "userRole": "citizen",
+    "comment": "Field test comment: Water sample dispatched to analytical laboratory.",
+    "createdAt": "2026-10-22T01:51:18.431Z"
+  },
+  {
+    "id": "com-1792633912682",
+    "reportId": "rep-010",
+    "userId": "usr-priya",
+    "userName": "Priya Sharma",
+    "userRole": "citizen",
+    "comment": "Field test comment: Water sample dispatched to analytical laboratory.",
+    "createdAt": "2026-10-22T01:51:52.682Z"
+  }
+]

@@ -1,0 +1,202 @@
+[
+  {
+    "id": "wb-001",
+    "name": "Hussain Sagar Lake",
+    "type": "Lake",
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "country": "India",
+    "coordinates": {
+      "latitude": 17.4239,
+      "longitude": 78.4738
+    },
+    "basinAreaKm2": 240.0,
+    "healthStatus": "Poor",
+    "baselineMetrics": {
+      "ph": 8.4,
+      "dissolvedOxygenMgL": 2.1,
+      "turbidityNtu": 48.0,
+      "bodMgL": 28.0,
+      "temperatureC": 26.5
+    },
+    "primaryThreats": ["Industrial Effluents", "Algal Bloom", "Sewage Influx"],
+    "description": "Historic heart-shaped lake built in 1563, suffering from domestic sewage discharge from Kukatpally nala and industrial chemical runoff.",
+    "imageUrl": "https://images.unsplash.com/photo-1596176530529-78163a4f7af2?auto=format&fit=crop&w=800&q=80",
+    "createdAt": "2026-01-15T00:00:00.000Z"
+  },
+  {
+    "id": "wb-002",
+    "name": "Yamuna River (Okhla Barrage Stretch)",
+    "type": "River",
+    "city": "New Delhi",
+    "state": "Delhi NCR",
+    "country": "India",
+    "coordinates": {
+      "latitude": 28.5447,
+      "longitude": 77.3082
+    },
+    "basinAreaKm2": 366223.0,
+    "healthStatus": "Critical",
+    "baselineMetrics": {
+      "ph": 8.9,
+      "dissolvedOxygenMgL": 0.4,
+      "turbidityNtu": 95.0,
+      "bodMgL": 62.0,
+      "temperatureC": 24.8
+    },
+    "primaryThreats": ["Untreated Sewage", "Toxic Chemical Foam", "Industrial Surfactants"],
+    "description": "Major perennial tributary of the Ganges. The 22-km Delhi stretch contributes 80% of the river's total pollution load, causing severe white toxic foaming.",
+    "imageUrl": "https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=800&q=80",
+    "createdAt": "2026-01-18T00:00:00.000Z"
+  },
+  {
+    "id": "wb-003",
+    "name": "Bellandur Lake",
+    "type": "Lake",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "country": "India",
+    "coordinates": {
+      "latitude": 12.9366,
+      "longitude": 77.6698
+    },
+    "basinAreaKm2": 361.0,
+    "healthStatus": "Critical",
+    "baselineMetrics": {
+      "ph": 8.7,
+      "dissolvedOxygenMgL": 0.8,
+      "turbidityNtu": 82.0,
+      "bodMgL": 45.0,
+      "temperatureC": 23.2
+    },
+    "primaryThreats": ["Toxic Foaming", "Raw Domestic Sewage", "Eutrophication"],
+    "description": "Bengaluru's largest lake, known globally for spontaneous methane combustions and dramatic snow-like toxic foam spilling into surrounding urban arterials.",
+    "imageUrl": "https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80",
+    "createdAt": "2026-01-20T00:00:00.000Z"
+  },
+  {
+    "id": "wb-004",
+    "name": "Powai Lake",
+    "type": "Lake",
+    "city": "Mumbai",
+    "state": "Maharashtra",
+    "country": "India",
+    "coordinates": {
+      "latitude": 19.1259,
+      "longitude": 72.9067
+    },
+    "basinAreaKm2": 6.6,
+    "healthStatus": "Moderate",
+    "baselineMetrics": {
+      "ph": 7.6,
+      "dissolvedOxygenMgL": 4.2,
+      "turbidityNtu": 31.0,
+      "bodMgL": 14.0,
+      "temperatureC": 27.1
+    },
+    "primaryThreats": ["Water Hyacinth Infestation", "Plastic Waste", "Urban Siltation"],
+    "description": "Artificial lake in suburban Mumbai created in 1891. Hosts mugger crocodiles and diverse avian fauna, but suffers from weed choking and municipal plastic runoff.",
+    "imageUrl": "https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80",
+    "createdAt": "2026-02-01T00:00:00.000Z"
+  },
+  {
+    "id": "wb-005",
+    "name": "Ulsoor Lake",
+    "type": "Lake",
+    "city": "Bengaluru",
+    "state": "Karnataka",
+    "country": "India",
+    "coordinates": {
+      "latitude": 12.9829,
+      "longitude": 77.6208
+    },
+    "basinAreaKm2": 1.5,
+    "healthStatus": "Moderate",
+    "baselineMetrics": {
+      "ph": 7.4,
+      "dissolvedOxygenMgL": 5.1,
+      "turbidityNtu": 24.0,
+      "bodMgL": 9.5,
+      "temperatureC": 23.8
+    },
+    "primaryThreats": ["Algal Blooms", "Fish Mortality Episodes", "Stormwater Overflow"],
+    "description": "Historical Kempe Gowda lake spanning 120 acres. Restoration efforts have improved oxygenation, but seasonal fish mortality remains an active community concern.",
+    "imageUrl": "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    "createdAt": "2026-02-05T00:00:00.000Z"
+  },
+  {
+    "id": "wb-006",
+    "name": "Ganga River (Varanasi Ghats Stretch)",
+    "type": "River",
+    "city": "Varanasi",
+    "state": "Uttar Pradesh",
+    "country": "India",
+    "coordinates": {
+      "latitude": 25.3076,
+      "longitude": 83.0107
+    },
+    "basinAreaKm2": 1086000.0,
+    "healthStatus": "Poor",
+    "baselineMetrics": {
+      "ph": 8.1,
+      "dissolvedOxygenMgL": 4.8,
+      "turbidityNtu": 38.0,
+      "bodMgL": 18.0,
+      "temperatureC": 25.0
+    },
+    "primaryThreats": ["High Coliform Bacteria", "Religious Floral Waste", "Municipal Sewage Drains"],
+    "description": "Sacred river of global cultural significance. Undergoes intensive biological remediation under the National Mission for Clean Ganga (NMCG), yet faces local microbial spikes.",
+    "imageUrl": "https://images.unsplash.com/photo-1561361513-2d000a50f0dc?auto=format&fit=crop&w=800&q=80",
+    "createdAt": "2026-02-10T00:00:00.000Z"
+  },
+  {
+    "id": "wb-007",
+    "name": "Dal Lake",
+    "type": "Lake",
+    "city": "Srinagar",
+    "state": "Jammu & Kashmir",
+    "country": "India",
+    "coordinates": {
+      "latitude": 34.1135,
+      "longitude": 74.8722
+    },
+    "basinAreaKm2": 316.0,
+    "healthStatus": "Good",
+    "baselineMetrics": {
+      "ph": 7.8,
+      "dissolvedOxygenMgL": 6.8,
+      "turbidityNtu": 12.0,
+      "bodMgL": 4.2,
+      "temperatureC": 14.5
+    },
+    "primaryThreats": ["Encroachment", "Azolla Weed Proliferation", "Houseboat Waste"],
+    "description": "Iconic high-altitude urban lake dubbed the 'Jewel in the crown of Kashmir'. Mechanical de-weeding and bio-digesters help maintain fair ecological balance.",
+    "imageUrl": "https://images.unsplash.com/photo-1566837945700-30057527ade0?auto=format&fit=crop&w=800&q=80",
+    "createdAt": "2026-02-12T00:00:00.000Z"
+  },
+  {
+    "id": "wb-008",
+    "name": "Durgam Cheruvu (Secret Lake)",
+    "type": "Lake",
+    "city": "Hyderabad",
+    "state": "Telangana",
+    "country": "India",
+    "coordinates": {
+      "latitude": 17.4334,
+      "longitude": 78.3853
+    },
+    "basinAreaKm2": 0.85,
+    "healthStatus": "Moderate",
+    "baselineMetrics": {
+      "ph": 7.5,
+      "dissolvedOxygenMgL": 5.4,
+      "turbidityNtu": 18.0,
+      "bodMgL": 8.0,
+      "temperatureC": 26.0
+    },
+    "primaryThreats": ["Urban Construction Runoff", "Plastic Litter", "Storm Drains"],
+    "description": "Scenic freshwater lake nestled between Jubilee Hills and Madhapur IT Corridor. Recently revitalized with a hanging bridge, but urban stormwater runoff threatens shoreline clarity.",
+    "imageUrl": "https://images.unsplash.com/photo-1546548970-71785318a17b?auto=format&fit=crop&w=800&q=80",
+    "createdAt": "2026-02-15T00:00:00.000Z"
+  }
+]
